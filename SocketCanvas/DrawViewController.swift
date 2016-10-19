@@ -44,6 +44,7 @@ class DrawViewController: UIViewController {
             context.setLineWidth(brushWidth)
             
             context.setStrokeColor(color)
+            context.setBlendMode(CGBlendMode.colorBurn)
             
             context.strokePath()
             
