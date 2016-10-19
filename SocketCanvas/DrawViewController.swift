@@ -21,7 +21,6 @@ class DrawViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var tempImageView: UIImageView!
-    @IBOutlet weak var mainImageView: UIImageView!
     
     // MARK: Drawing functions
     
@@ -45,7 +44,6 @@ class DrawViewController: UIViewController {
             context.setLineWidth(brushWidth)
             
             context.setStrokeColor(color)
-            context.setBlendMode(CGBlendMode.normal)
             
             context.strokePath()
             
@@ -73,22 +71,6 @@ class DrawViewController: UIViewController {
             // draw a single point
             drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
         }
-        
-        // Merge tempImageView into mainImageView
-        UIGraphicsBeginImageContext(mainImageView.frame.size)
-        
-        mainImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height),
-                                  blendMode: CGBlendMode.normal,
-                                  alpha: 1.0)
-        
-        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height),
-                                  blendMode: CGBlendMode.normal,
-                                  alpha: alpha)
-        
-        mainImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        tempImageView.image = nil
     }
 
     // MARK: Boilerplate

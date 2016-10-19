@@ -19,22 +19,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uoa-qr-Jji"/>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qaf-Xl-UXk"/>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Uoa-qr-Jji" firstAttribute="top" secondItem="qaf-Xl-UXk" secondAttribute="top" id="0cF-Gf-Rl5"/>
-                            <constraint firstItem="qaf-Xl-UXk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0wh-m8-ulM"/>
                             <constraint firstItem="Uoa-qr-Jji" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GAa-Cy-Zg2"/>
                             <constraint firstItem="Uoa-qr-Jji" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="IoO-Uo-F9P"/>
-                            <constraint firstItem="Uoa-qr-Jji" firstAttribute="leading" secondItem="qaf-Xl-UXk" secondAttribute="leading" id="PMg-hF-MYb"/>
                             <constraint firstItem="Uoa-qr-Jji" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Tjb-s7-r53"/>
                             <constraint firstItem="Uoa-qr-Jji" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cl0-A1-f8b"/>
-                            <constraint firstItem="qaf-Xl-UXk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lnv-av-Y4l"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mainImageView" destination="qaf-Xl-UXk" id="5ND-CU-B6p"/>
                         <outlet property="tempImageView" destination="Uoa-qr-Jji" id="Ow2-fR-tma"/>
                     </connections>
                 </viewController>
