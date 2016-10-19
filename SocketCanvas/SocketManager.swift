@@ -13,7 +13,7 @@ class SocketManager {
     var socket: SocketIOClient?
     
     init() {
-        socket = SocketIOClient(socketURL: NSURL(string:"http://54.218.125.161:3000")! as URL)
+        socket = SocketIOClient(socketURL: NSURL(string:"")! as URL)
         
         socket?.on("touchBegan", callback: {
             data,ack in
