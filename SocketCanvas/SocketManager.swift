@@ -10,14 +10,27 @@ import Foundation
 
 class SocketManager {
     
+    static var instance: SocketManager?
     var socket: SocketIOClient?
     
-    init() {
-        socket = SocketIOClient(socketURL: NSURL(string:"")! as URL)
+    static func getInstance() -> SocketManager! {
+        if instance == nil {
+            instance = SocketManager()
+        }
+        return instance!
+    }
+    
+    private init() {
+        socket = SocketIOClient(socketURL: URL(string:"")! as URL)
         
-        socket?.on("touchBegan", callback: {
+        let json = ["x": 5,
+                    "y": 10]
+        
+        socket?.emit("draw", json)
+        
+        socket?.on("draw", callback: {
             data,ack in
-
+            
         })
     }
     
