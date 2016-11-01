@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawViewController: UIViewController {
+class DrawViewController: UIViewController, SocketManagerDelegate {
     
     // MARK: Color settings
     var brushColor: CGColor = UIColor.black.cgColor
@@ -22,12 +22,19 @@ class DrawViewController: UIViewController {
     // MARK: Outlets
     @IBOutlet weak var tempImageView: UIImageView!
     
+    // MARK SocketManagerDelegate
+    
+    internal func touchesBegan(location: CGPoint) {
+        print("TOUCH BEGAN: \(location)")
+        swiped = false
+        lastPoint = location
+    }
+    
     // MARK: Drawing functions
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = false
         if let touch = touches.first {
-            lastPoint = touch.location(in: self.view)
+            SocketManager.getInstance().touchesBegan(point: touch.location(in: self.view))
         }
     }
     
@@ -78,6 +85,7 @@ class DrawViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SocketManager.getInstance().delegate = self
     }
 
     override func didReceiveMemoryWarning() {

@@ -7,31 +7,44 @@
 //
 
 import Foundation
+import UIKit
 
 class SocketManager {
     
     static var instance: SocketManager?
-    var socket: SocketIOClient?
+    var socket: SocketIOClient
+    
+    var delegate: SocketManagerDelegate?
     
     static func getInstance() -> SocketManager! {
         if instance == nil {
             instance = SocketManager()
         }
-        return instance!
+        return instance
     }
     
     private init() {
-        socket = SocketIOClient(socketURL: URL(string:"")! as URL)
+        socket = SocketIOClient(socketURL: NSURL(string:"http://127.0.0.1:3000")! as URL)
+        socket.connect()
+        print("DID CONNECT: \(socket.status.rawValue)")
         
-        let json = ["x": 5,
-                    "y": 10]
-        
-        socket?.emit("draw", json)
-        
-        socket?.on("draw", callback: {
+        socket.on("touchesBegan", callback: {
             data,ack in
-            
+            let json = data.first as! NSDictionary
+            self.delegate?.touchesBegan(location: CGPoint(x: json["x"] as! CGFloat, y: json["y"] as! CGFloat))
         })
     }
+    
+    func touchesBegan(point: CGPoint) {
+        let json = ["x": point.x,
+                    "y": point.y]
+        socket.emit("touchesBegan", json)
+    }
+    
+}
+
+protocol SocketManagerDelegate: class {
+    
+    func touchesBegan(location: CGPoint)
     
 }
