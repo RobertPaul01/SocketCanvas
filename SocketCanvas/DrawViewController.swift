@@ -24,56 +24,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     
     // MARK: SocketManagerDelegate
     
-    internal func touchesBegan(location: CGPoint) {
-        print("TOUCH BEGAN: \(location)")
-        swiped = false
-        lastPoint = location
-    }
-    
-    internal func touchesMoved(location: CGPoint) {
-        print("TOUCH MOVED: \(location)")
-        swiped = true
-        drawLineFrom(fromPoint: lastPoint, toPoint: location, with: brushColor)
-        lastPoint = location
-    }
-    
-    internal func touchesEnded() {
-        print("TOUCH ENDED: \(swiped)")
-        if !swiped {
-            // draw a single point
-            drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
-        }
-    }
-    
-    // MARK: Drawing functions
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = false
-        if let touch = touches.first {
-            lastPoint = touch.location(in: self.view)
-            //SocketManager.getInstance().touchesBegan(point: touch.location(in: self.view))
-        }
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = true
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: view)
-            //drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
-            SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
-            lastPoint = currentPoint
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //SocketManager.getInstance().touchesEnded()
-        if !swiped {
-            // draw a single point
-            SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
-        }
-    }
-
-    
     internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
         
         UIGraphicsBeginImageContext(view.frame.size)
@@ -97,7 +47,32 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
             print("Error: Drawing context not found!!!")
         }
         UIGraphicsEndImageContext()
-
+        
+    }
+    
+    // MARK: Drawing functions
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = false
+        if let touch = touches.first {
+            lastPoint = touch.location(in: self.view)
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = true
+        if let touch = touches.first {
+            let currentPoint = touch.location(in: view)
+            SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
+            lastPoint = currentPoint
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        //SocketManager.getInstance().touchesEnded()
+        if !swiped {
+            SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
+        }
     }
 
     // MARK: Boilerplate
