@@ -22,12 +22,27 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     // MARK: Outlets
     @IBOutlet weak var tempImageView: UIImageView!
     
-    // MARK SocketManagerDelegate
+    // MARK: SocketManagerDelegate
     
     internal func touchesBegan(location: CGPoint) {
         print("TOUCH BEGAN: \(location)")
         swiped = false
         lastPoint = location
+    }
+    
+    internal func touchesMoved(location: CGPoint) {
+        print("TOUCH MOVED: \(location)")
+        swiped = true
+        drawLineFrom(fromPoint: lastPoint, toPoint: location, with: brushColor)
+        lastPoint = location
+    }
+    
+    internal func touchesEnded() {
+        print("TOUCH ENDED: \(swiped)")
+        if !swiped {
+            // draw a single point
+            drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
+        }
     }
     
     // MARK: Drawing functions
@@ -37,6 +52,17 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
             SocketManager.getInstance().touchesBegan(point: touch.location(in: self.view))
         }
     }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            SocketManager.getInstance().touchesMoved(point: touch.location(in: self.view))
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        SocketManager.getInstance().touchesEnded()
+    }
+
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
         
@@ -62,23 +88,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         }
         UIGraphicsEndImageContext()
 
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        swiped = true
-        if let touch = touches.first {
-            let currentPoint = touch.location(in: view)
-            drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
-            
-            lastPoint = currentPoint
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !swiped {
-            // draw a single point
-            drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
-        }
     }
 
     // MARK: Boilerplate
