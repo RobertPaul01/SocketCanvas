@@ -11,7 +11,7 @@ import UIKit
 class DrawViewController: UIViewController, SocketManagerDelegate {
     
     // MARK: Color settings
-    var brushColor: CGColor = UIColor.black.cgColor
+    var brushColor: CIColor = CIColor.magenta()
     var brushWidth: CGFloat = 10.0
     var alpha: CGFloat = 1.0
     
@@ -25,6 +25,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     // MARK: SocketManagerDelegate
     
     internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
+        print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
         
         UIGraphicsBeginImageContext(view.frame.size)
         if let context = UIGraphicsGetCurrentContext() {
@@ -69,7 +70,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        //SocketManager.getInstance().touchesEnded()
         if !swiped {
             SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
         }
