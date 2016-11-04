@@ -76,8 +76,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
             SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
         }
     }
-
-    // MARK: Boilerplate
     
     @IBAction func colorPickerPressed(_ sender: Any) {
         //cyan, green, blue, red, orange, purple, brown, yellow, magenta
