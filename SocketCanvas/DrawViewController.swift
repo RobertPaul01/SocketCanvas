@@ -104,8 +104,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         else if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.magenta()))
         {
             colorPicker.backgroundColor = UIColor(ciColor: CIColor.cyan())
-        }
-                
+        }        
     }    
     
     // MARK: Boilerplate
