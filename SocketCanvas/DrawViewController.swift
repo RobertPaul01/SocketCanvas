@@ -10,6 +10,8 @@ import UIKit
 
 class DrawViewController: UIViewController, SocketManagerDelegate {
     
+    
+    @IBOutlet var colorPicker: UIButton!
     // MARK: Color settings
     var brushColor: CIColor = CIColor.magenta()
     var brushWidth: CGFloat = 10.0
@@ -77,9 +79,45 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
 
     // MARK: Boilerplate
     
+    @IBAction func colorPickerPressed(_ sender: Any) {
+        //cyan, green, blue, red, orange, purple, brown, yellow, magenta
+        
+        
+        if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.cyan()))
+        {
+            colorPicker.backgroundColor = UIColor(ciColor: CIColor.green())
+        }
+        else if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.green()))
+        {
+            colorPicker.backgroundColor = UIColor(ciColor: CIColor.blue())
+        }
+        else if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.blue()))
+        {
+            colorPicker.backgroundColor = UIColor(ciColor: CIColor.red())
+        }
+        else if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.red()))
+        {
+            colorPicker.backgroundColor = UIColor(ciColor: CIColor.yellow())
+        }
+        else if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.yellow()))
+        {
+            colorPicker.backgroundColor = UIColor(ciColor: CIColor.magenta())
+        }
+        else if(colorPicker.backgroundColor == UIColor(ciColor: CIColor.magenta()))
+        {
+            colorPicker.backgroundColor = UIColor(ciColor: CIColor.cyan())
+        }
+        
+        
+    }
+    
+    
+    // MARK: Boilerplate
+
     override func viewDidLoad() {
         super.viewDidLoad()
         SocketManager.getInstance().delegate = self
+        colorPicker.backgroundColor = UIColor(ciColor: CIColor.cyan())
     }
 
     override func didReceiveMemoryWarning() {
