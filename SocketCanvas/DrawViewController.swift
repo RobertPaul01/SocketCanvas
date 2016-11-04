@@ -105,8 +105,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         {
             colorPicker.backgroundColor = UIColor(ciColor: CIColor.cyan())
         }
-        
-        
+                
     }    
     
     // MARK: Boilerplate
