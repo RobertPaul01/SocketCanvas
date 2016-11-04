@@ -48,23 +48,33 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     // MARK: Drawing functions
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = false
         if let touch = touches.first {
-            SocketManager.getInstance().touchesBegan(point: touch.location(in: self.view))
+            lastPoint = touch.location(in: self.view)
+            //SocketManager.getInstance().touchesBegan(point: touch.location(in: self.view))
         }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        swiped = true
         if let touch = touches.first {
-            SocketManager.getInstance().touchesMoved(point: touch.location(in: self.view))
+            let currentPoint = touch.location(in: view)
+            drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
+            lastPoint = currentPoint
+            //SocketManager.getInstance().touchesMoved(point: touch.location(in: self.view))
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        SocketManager.getInstance().touchesEnded()
+        //SocketManager.getInstance().touchesEnded()
+        if !swiped {
+            // draw a single point
+            drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
+        }
     }
 
     
-    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
+    internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
         
         UIGraphicsBeginImageContext(view.frame.size)
         if let context = UIGraphicsGetCurrentContext() {

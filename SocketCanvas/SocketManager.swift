@@ -23,8 +23,9 @@ class SocketManager {
         return instance
     }
     
+    // http://54.213.175.58:3000
     private init() {
-        socket = SocketIOClient(socketURL: NSURL(string:"http://54.213.175.58:3000")! as URL)
+        socket = SocketIOClient(socketURL: NSURL(string:"http://127.0.0.1:3000")! as URL)
         socket.connect()
         print("DID CONNECT: \(socket.status.rawValue)")
         
@@ -44,6 +45,12 @@ class SocketManager {
             data,ack in
             self.delegate?.touchesEnded()
         })
+        
+        socket.on("drawLineFrom", callback: {
+            data,ack in
+            let json = data.first as! NSDictionary
+            self.delegate?.drawLineFrom(fromPoint: json["fromPoint"] as! CGPoint, toPoint: json["toPoint"] as! CGPoint, with: json["color"] as! CGColor)
+        })
     }
     
     func touchesBegan(point: CGPoint) {
@@ -62,6 +69,13 @@ class SocketManager {
         socket.emit("touchesEnded", "touchesEnded")
     }
     
+    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
+        let json = ["fromPoint": fromPoint,
+                    "toPoint": toPoint,
+                    "color": color] as [String : Any]
+        socket.emit("drawLineFrom", json)
+    }
+    
 }
 
 protocol SocketManagerDelegate: class {
@@ -69,5 +83,7 @@ protocol SocketManagerDelegate: class {
     func touchesBegan(location: CGPoint)
     func touchesMoved(location: CGPoint)
     func touchesEnded()
+    
+    func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor)
     
 }
