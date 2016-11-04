@@ -49,7 +49,7 @@ class SocketManager {
         socket.on("drawLineFrom", callback: {
             data,ack in
             let json = data.first as! NSDictionary
-            self.delegate?.drawLineFrom(fromPoint: json["fromPoint"] as! CGPoint, toPoint: json["toPoint"] as! CGPoint, with: json["color"] as! CGColor)
+            self.delegate?.drawLineFrom(fromPoint: CGPoint(x: json["fX"] as! CGFloat, y: json["fY"] as! CGFloat), toPoint: CGPoint(x: json["tX"] as! CGFloat, y: json["tY"] as! CGFloat), with: UIColor.black.cgColor)
         })
     }
     
@@ -70,9 +70,10 @@ class SocketManager {
     }
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
-        let json = ["fromPoint": fromPoint,
-                    "toPoint": toPoint,
-                    "color": color] as [String : Any]
+        let json = ["fX": fromPoint.x,
+                    "fY": fromPoint.y,
+                    "tX": toPoint.x,
+                    "tY": toPoint.y,] as [String : Any]
         socket.emit("drawLineFrom", json)
     }
     

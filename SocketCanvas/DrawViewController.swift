@@ -59,9 +59,9 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         swiped = true
         if let touch = touches.first {
             let currentPoint = touch.location(in: view)
-            drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
+            //drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
+            SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: currentPoint, with: brushColor)
             lastPoint = currentPoint
-            //SocketManager.getInstance().touchesMoved(point: touch.location(in: self.view))
         }
     }
     
@@ -69,7 +69,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         //SocketManager.getInstance().touchesEnded()
         if !swiped {
             // draw a single point
-            drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
+            SocketManager.getInstance().drawLineFrom(fromPoint: lastPoint, toPoint: lastPoint, with: brushColor)
         }
     }
 
