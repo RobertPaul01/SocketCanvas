@@ -107,8 +107,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         }
         
         
-    }
-    
+    }    
     
     // MARK: Boilerplate
 
