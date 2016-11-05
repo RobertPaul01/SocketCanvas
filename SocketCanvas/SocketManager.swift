@@ -23,7 +23,8 @@ class SocketManager {
         return instance
     }
     
-    // http://54.213.175.58:3000
+    // MARK: Init with AWS server at http://54.213.175.58:3000
+    
     private init() {
         socket = SocketIOClient(socketURL: NSURL(string:"http://54.213.175.58:3000")! as URL)
         socket.connect()

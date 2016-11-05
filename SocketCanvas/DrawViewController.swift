@@ -10,18 +10,18 @@ import UIKit
 
 class DrawViewController: UIViewController, SocketManagerDelegate {
     
-    
-    @IBOutlet var colorPicker: UIButton!
     // MARK: Color settings
     var brushColor: CIColor = CIColor.magenta()
     var brushWidth: CGFloat = 10.0
     var alpha: CGFloat = 1.0
     var count = 0;
+    
     // MARK: Drawing vars
     var lastPoint = CGPoint.zero
     var swiped = false
     
     // MARK: Outlets
+    @IBOutlet var colorPicker: UIButton!
     @IBOutlet weak var tempImageView: UIImageView!
     
     // MARK: SocketManagerDelegate
@@ -39,8 +39,10 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
             context.setLineCap(CGLineCap.round)
             context.setLineWidth(brushWidth)
             
+            context.setLineJoin(.round)
+            
             context.setStrokeColor(color)
-            context.setBlendMode(CGBlendMode.colorBurn)
+            context.setBlendMode(CGBlendMode.plusDarker)
             
             context.strokePath()
             
@@ -77,42 +79,33 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
         }
     }
     
+    // MARK: Color picker button
+    
     @IBAction func colorPickerPressed(_ sender: Any) {
-        //cyan, green, blue, red, orange, purple, brown, yellow, magenta
-
-        switch count%6 {
-            
-        case 0:
-            colorPicker.backgroundColor = UIColor(ciColor: CIColor.magenta())
-            brushColor = CIColor.magenta()
-            count+=1
-        case 1:
-            colorPicker.backgroundColor = UIColor(ciColor: CIColor.green())
-            brushColor = CIColor.green()
-            count+=1
-        case 2:
-            colorPicker.backgroundColor = UIColor(ciColor: CIColor.cyan())
-            brushColor = CIColor.cyan()
-            count+=1
-        case 3:
-            colorPicker.backgroundColor = UIColor(ciColor: CIColor.blue())
-            brushColor = CIColor.blue()
-            count+=1
-        case 4:
-            colorPicker.backgroundColor = UIColor(ciColor: CIColor.yellow())
-            brushColor = CIColor.yellow()
-            count+=1
-        case 5:
-            colorPicker.backgroundColor = UIColor(ciColor: CIColor.red())
-            brushColor = CIColor.red()
-            count+=1
-        default:
-            break
-        }
+        var color: CIColor?
+        count = (count+1)%6
         
+        switch count {
+        case 0:
+            color = CIColor.magenta()
+        case 1:
+            color = CIColor.green()
+        case 2:
+            color = CIColor.cyan()
+        case 3:
+            color = CIColor.blue()
+        case 4:
+            color = CIColor.yellow()
+        case 5:
+            color = CIColor.red()
+        default:
+            print("colorPickerPressed error")
+        }
+        colorPicker.backgroundColor = UIColor(ciColor: color!)
+        brushColor = color!
     }
     
-    // MARK: Boilerplate
+    // MARK: UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
