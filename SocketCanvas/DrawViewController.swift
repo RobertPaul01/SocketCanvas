@@ -27,7 +27,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
     // MARK: SocketManagerDelegate
     
     internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
-        print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
+        //print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
         
         UIGraphicsBeginImageContext(view.frame.size)
         if let context = UIGraphicsGetCurrentContext() {
