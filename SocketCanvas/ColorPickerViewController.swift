@@ -75,16 +75,24 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate, UIC
             
             
             
-            let myCIColor = color.coreImageColor
+//            let myCIColor = color.coreImageColor
             let greencomponent = color.components.green
-            let myColorComponents = color.components
+            let redcomponent = color.components.red
+            let bluecomponent = color.components.blue
+            let alphacomponent = color.components.alpha
+            
+//            let myColorComponents = color.components
           
+            let testColor = CIColor(red: redcomponent, green: greencomponent, blue: bluecomponent, alpha: alphacomponent)
+            
+            print("green = ", greencomponent)
+            print("blue = ", bluecomponent)
+            print("red = ", redcomponent)
+            print("alpha = ", alphacomponent)
             
             
             
-            
-            
-            delegate?.brushColor =  myCIColor
+            delegate?.brushColor =  testColor
             delegate?.colorPicker.backgroundColor = color
         }
     }
