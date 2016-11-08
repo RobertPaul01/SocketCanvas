@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawViewController: UIViewController, SocketManagerDelegate {
+class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPresentationControllerDelegate {
     
     // MARK: Color settings
     var brushColor: CIColor = CIColor.magenta()
@@ -81,28 +81,40 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     
     // MARK: Color picker button
     
-    @IBAction func colorPickerPressed(_ sender: Any) {
-        var color: CIColor?
-        count = (count+1)%6
-        
-        switch count {
-        case 0:
-            color = CIColor.magenta()
-        case 1:
-            color = CIColor.green()
-        case 2:
-            color = CIColor.cyan()
-        case 3:
-            color = CIColor.blue()
-        case 4:
-            color = CIColor.yellow()
-        case 5:
-            color = CIColor.red()
-        default:
-            print("colorPickerPressed error")
+    @IBAction func colorPickerPressed(_ sender: UIButton) {
+//        var color: CIColor?
+//        count = (count+1)%6
+//        
+//        switch count {
+//        case 0:
+//            color = CIColor.magenta()
+//        case 1:
+//            color = CIColor.green()
+//        case 2:
+//            color = CIColor.cyan()
+//        case 3:
+//            color = CIColor.blue()
+//        case 4:
+//            color = CIColor.yellow()
+//        case 5:
+//            color = CIColor.red()
+//        default:
+//            print("colorPickerPressed error")
+//        }
+//        colorPicker.backgroundColor = UIColor(ciColor: color!)
+//        brushColor = color!
+
+        let popoverVC = storyboard?.instantiateViewController(withIdentifier: "colorPickerPopover") as! ColorPickerViewController
+        popoverVC.modalPresentationStyle = .popover
+        popoverVC.preferredContentSize = CGSize(width: 284, height: 446)
+        if let popoverController = popoverVC.popoverPresentationController {
+            popoverController.sourceView = sender
+            popoverController.sourceRect = CGRect(x: 0, y: 0, width: 85, height: 30)
+            popoverController.permittedArrowDirections = .any
+            popoverController.delegate = self
+            popoverVC.delegate = self
         }
-        colorPicker.backgroundColor = UIColor(ciColor: color!)
-        brushColor = color!
+        present(popoverVC, animated: true, completion: nil)
     }
     
     // MARK: UIViewController
@@ -116,6 +128,18 @@ class DrawViewController: UIViewController, SocketManagerDelegate {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    
+    // Override the iPhone behavior that presents a popover as fullscreen
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        // Return no adaptive presentation style, use default presentation behaviour
+        return .none
+    }
+    
+    
+    func setButtonColor (_ color: UIColor) {
+        colorPicker.setTitleColor(color, for:UIControlState())
     }
     
 }

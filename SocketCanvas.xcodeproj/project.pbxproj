@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		88C436FA1DD2614D00CAA711 /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C436F91DD2614D00CAA711 /* ColorPickerViewController.swift */; };
+		88C436FC1DD267C500CAA711 /* colorPalette.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88C436FB1DD267C500CAA711 /* colorPalette.plist */; };
 		D5517E2E1DAEDA5E006B1409 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5517E2D1DAEDA5E006B1409 /* AppDelegate.swift */; };
 		D5517E301DAEDA5E006B1409 /* DrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5517E2F1DAEDA5E006B1409 /* DrawViewController.swift */; };
 		D5517E331DAEDA5E006B1409 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5517E311DAEDA5E006B1409 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		88C436F91DD2614D00CAA711 /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		88C436FB1DD267C500CAA711 /* colorPalette.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = colorPalette.plist; sourceTree = "<group>"; };
 		D5517E2A1DAEDA5E006B1409 /* SocketCanvas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocketCanvas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5517E2D1DAEDA5E006B1409 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5517E2F1DAEDA5E006B1409 /* DrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 				D5517E361DAEDA5E006B1409 /* LaunchScreen.storyboard */,
 				D5517E391DAEDA5E006B1409 /* Info.plist */,
 				D562FBCC1DB82F1F0058361A /* SocketManager.swift */,
+				88C436FB1DD267C500CAA711 /* colorPalette.plist */,
+				88C436F91DD2614D00CAA711 /* ColorPickerViewController.swift */,
 			);
 			path = SocketCanvas;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 			files = (
 				D5517E381DAEDA5E006B1409 /* LaunchScreen.storyboard in Resources */,
 				D5517E351DAEDA5E006B1409 /* Assets.xcassets in Resources */,
+				88C436FC1DD267C500CAA711 /* colorPalette.plist in Resources */,
 				D5517E331DAEDA5E006B1409 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +237,7 @@
 				D562FC1A1DB839390058361A /* SocketClientManager.swift in Sources */,
 				D562FC211DB839390058361A /* SocketEventHandler.swift in Sources */,
 				D562FC251DB839390058361A /* SocketIOClientOption.swift in Sources */,
+				88C436FA1DD2614D00CAA711 /* ColorPickerViewController.swift in Sources */,
 				D562FC2D1DB839390058361A /* SSLSecurity.swift in Sources */,
 				D562FC1F1DB839390058361A /* SocketEngineSpec.swift in Sources */,
 				D562FC2A1DB839390058361A /* SocketParsable.swift in Sources */,
