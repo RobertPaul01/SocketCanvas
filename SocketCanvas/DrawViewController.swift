@@ -42,7 +42,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
             context.setLineJoin(.round)
             
             context.setStrokeColor(color)
-            context.setBlendMode(CGBlendMode.plusDarker)
+//            context.setBlendMode(CGBlendMode.plusDarker)
             
             context.strokePath()
             
@@ -82,27 +82,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
     // MARK: Color picker button
     
     @IBAction func colorPickerPressed(_ sender: UIButton) {
-//        var color: CIColor?
-//        count = (count+1)%6
-//        
-//        switch count {
-//        case 0:
-//            color = CIColor.magenta()
-//        case 1:
-//            color = CIColor.green()
-//        case 2:
-//            color = CIColor.cyan()
-//        case 3:
-//            color = CIColor.blue()
-//        case 4:
-//            color = CIColor.yellow()
-//        case 5:
-//            color = CIColor.red()
-//        default:
-//            print("colorPickerPressed error")
-//        }
-//        colorPicker.backgroundColor = UIColor(ciColor: color!)
-//        brushColor = color!
 
         let popoverVC = storyboard?.instantiateViewController(withIdentifier: "colorPickerPopover") as! ColorPickerViewController
         popoverVC.modalPresentationStyle = .popover

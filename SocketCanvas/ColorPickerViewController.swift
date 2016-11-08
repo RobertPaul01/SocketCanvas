@@ -83,13 +83,12 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate, UIC
             
 //            let myColorComponents = color.components
           
-            let testColor = CIColor(red: redcomponent, green: greencomponent, blue: bluecomponent, alpha: alphacomponent)
+            let testColor = CIColor(red: redcomponent, green: greencomponent, blue: bluecomponent, alpha: 1)
             
             print("green = ", greencomponent)
             print("blue = ", bluecomponent)
             print("red = ", redcomponent)
             print("alpha = ", alphacomponent)
-            
             
             
             delegate?.brushColor =  testColor
@@ -108,6 +107,3 @@ class ColorPickerViewController: UIViewController, UICollectionViewDelegate, UIC
             return (color.red, color.green, color.blue, color.alpha)
         }
     }
-    
-
-
