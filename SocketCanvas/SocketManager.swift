@@ -41,6 +41,11 @@ class SocketManager {
                                                                        green: json["g"] as! CGFloat,
                                                                        blue: json["b"] as! CGFloat)).cgColor)
         })
+        
+        socket.on("clear", callback: {
+            data,ack in
+            
+        })
     }
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CIColor) {
@@ -51,11 +56,20 @@ class SocketManager {
                     "r": color.red, "g": color.green, "b": color.blue,] as [String : Any]
         socket.emit("drawLineFrom", json)
     }
+
+    func clearCanvasReady() {
+        socket.emit("clearReady", "")
+    }
+    
+    func clearCanvasUnready() {
+        socket.emit("clearwUnready", "")
+    }
     
 }
 
 protocol SocketManagerDelegate: class {
     
     func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor)
+    func clearCanvas()
     
 }
