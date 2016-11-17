@@ -52,6 +52,11 @@ class SocketManager {
         socket.emit("drawLineFrom", json)
     }
     
+    func clearScreenRequest(){
+        let json = ["clearReady":"clear"] as [String : Any]
+        socket.emit("clearReady",json)
+    }
+    
 }
 
 protocol SocketManagerDelegate: class {
