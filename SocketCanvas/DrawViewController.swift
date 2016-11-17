@@ -96,7 +96,15 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         present(popoverVC, animated: true, completion: nil)
     }
     
-    // MARK: UIViewController
+
+    @IBAction func erase(_ sender: UIButton) {
+        //
+    
+    
+    }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
