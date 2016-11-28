@@ -25,9 +25,13 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
     @IBOutlet weak var tempImageView: UIImageView!
     
     // MARK: SocketManagerDelegate
+
+    internal func clearCanvas() {
+        
+    }
     
     internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
-        print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
+        //print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
         
         UIGraphicsBeginImageContext(view.frame.size)
         if let context = UIGraphicsGetCurrentContext() {
