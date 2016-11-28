@@ -27,7 +27,19 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
     // MARK: SocketManagerDelegate
 
     internal func clearCanvas() {
-        
+        print("Trying to clear")
+        UIGraphicsBeginImageContext(view.frame.size)
+        if let context = UIGraphicsGetCurrentContext() {
+            tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+            
+            context.clear(CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+            
+            tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+            tempImageView.alpha = alpha
+        } else {
+            print("Error: Drawing context not found!!!")
+        }
+        UIGraphicsEndImageContext()
     }
     
     internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
@@ -46,7 +58,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
             context.setLineJoin(.round)
             
             context.setStrokeColor(color)
-//            context.setBlendMode(CGBlendMode.plusDarker)
             
             context.strokePath()
             
@@ -106,15 +117,14 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         super.viewDidLoad()
         SocketManager.getInstance().delegate = self
         colorPicker.backgroundColor = UIColor(ciColor: CIColor.magenta())
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    // MARK: Override the iPhone behavior that presents a popover as fullscreen
     
-    // Override the iPhone behavior that presents a popover as fullscreen
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // Return no adaptive presentation style, use default presentation behaviour
         return .none
@@ -125,5 +135,14 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         colorPicker.setTitleColor(color, for:UIControlState())
     }
     
+    // MARK: Clear switch
+    
+    @IBAction func clearToggle(_ sender: UISwitch) {
+        if (sender.isOn) {
+            SocketManager.getInstance().clearCanvasReady()
+        } else {
+            SocketManager.getInstance().clearCanvasUnready()
+        }
+    }
 }
 

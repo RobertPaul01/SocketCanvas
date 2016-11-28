@@ -44,7 +44,7 @@ class SocketManager {
         
         socket.on("clear", callback: {
             data,ack in
-            
+            self.delegate?.clearCanvas()
         })
     }
     
