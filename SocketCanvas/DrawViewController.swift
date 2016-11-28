@@ -103,7 +103,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
     
     func clearScreenRequest(){
         //implement function to send erase request to server
-        SocketManager.getInstance().clearScreenRequest()
+
     }
     
     
