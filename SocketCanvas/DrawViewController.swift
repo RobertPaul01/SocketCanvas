@@ -100,7 +100,18 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         present(popoverVC, animated: true, completion: nil)
     }
     
-    // MARK: UIViewController
+
+
+    @IBAction func erase(_ sender: UIButton) {
+        clearScreenRequest()
+    }
+    
+    func clearScreenRequest(){
+        //implement function to send erase request to server
+
+    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

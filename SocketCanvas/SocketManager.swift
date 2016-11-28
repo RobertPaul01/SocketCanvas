@@ -61,6 +61,7 @@ class SocketManager {
         socket.emit("clearReady", "")
     }
     
+
     func clearCanvasUnready() {
         socket.emit("clearwUnready", "")
     }
