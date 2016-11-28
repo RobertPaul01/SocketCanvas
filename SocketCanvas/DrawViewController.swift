@@ -43,7 +43,7 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
     }
     
     internal func drawLineFrom(fromPoint: CGPoint, toPoint: CGPoint, with color: CGColor) {
-        //print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
+        print("Draw from: \(fromPoint), toPoint: \(toPoint), with color: \(color)")
         
         UIGraphicsBeginImageContext(view.frame.size)
         if let context = UIGraphicsGetCurrentContext() {
@@ -111,7 +111,15 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         present(popoverVC, animated: true, completion: nil)
     }
     
-    // MARK: UIViewController
+
+    @IBAction func erase(_ sender: UIButton) {
+        clearScreenRequest()
+    }
+    
+    func clearScreenRequest(){
+        //implement function to send erase request to server
+        SocketManager.getInstance().clearScreenRequest()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

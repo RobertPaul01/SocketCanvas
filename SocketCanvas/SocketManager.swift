@@ -56,13 +56,18 @@ class SocketManager {
                     "r": color.red, "g": color.green, "b": color.blue,] as [String : Any]
         socket.emit("drawLineFrom", json)
     }
-
-    func clearCanvasReady() {
-        socket.emit("clearReady", "")
+    
+    func clearScreenRequest(){
+        let json = ["clearReady":"clear"] as [String : Any]
+        socket.emit("clearReady",json)
     }
     
-    func clearCanvasUnready() {
-        socket.emit("clearwUnready", "")
+    func clearCanvasReady(){
+        socket.emit("clearCanvasReady","")
+    }
+    
+    func clearCanvasUnready(){
+        socket.emit("clearCanvasUnready","")
     }
     
 }
