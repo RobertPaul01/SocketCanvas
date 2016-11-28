@@ -138,7 +138,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         return .none
     }
     
-    
     func setButtonColor (_ color: UIColor) {
         colorPicker.setTitleColor(color, for:UIControlState())
     }

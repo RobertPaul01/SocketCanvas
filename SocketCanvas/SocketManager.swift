@@ -58,16 +58,16 @@ class SocketManager {
     }
     
     func clearScreenRequest(){
-        let json = ["clearReady":"clear"] as [String : Any]
-        socket.emit("clearReady",json)
+        //let json = ["clearReady":"clear"] as [String : Any]
+        //socket.emit("clearReady",json)
     }
     
     func clearCanvasReady(){
-        socket.emit("clearCanvasReady","")
+        socket.emit("clearReady","")
     }
     
     func clearCanvasUnready(){
-        socket.emit("clearCanvasUnready","")
+        socket.emit("clearUnready","")
     }
     
 }
