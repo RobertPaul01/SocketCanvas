@@ -110,7 +110,6 @@ class DrawViewController: UIViewController, SocketManagerDelegate, UIPopoverPres
         }
         present(popoverVC, animated: true, completion: nil)
     }
-    
 
     @IBAction func erase(_ sender: UIButton) {
         clearScreenRequest()

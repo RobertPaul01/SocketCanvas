@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uoa-qr-Jji">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SFq-e0-f7H">
                                 <rect key="frame" x="0.0" y="562" width="375" height="105"/>
@@ -63,14 +64,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SFq-e0-f7H" firstAttribute="top" secondItem="Uoa-qr-Jji" secondAttribute="bottom" constant="8" id="FE1-2x-cLi"/>
                             <constraint firstItem="SFq-e0-f7H" firstAttribute="leading" secondItem="Uoa-qr-Jji" secondAttribute="leading" id="Gvk-0B-WLp"/>
                             <constraint firstItem="SFq-e0-f7H" firstAttribute="trailing" secondItem="Uoa-qr-Jji" secondAttribute="trailing" id="KTu-lv-oY0"/>
                             <constraint firstAttribute="trailing" secondItem="Uoa-qr-Jji" secondAttribute="trailing" id="PEz-gg-FoF"/>
-                            <constraint firstItem="SFq-e0-f7H" firstAttribute="top" secondItem="Uoa-qr-Jji" secondAttribute="bottom" constant="8" symbolic="YES" id="Rqh-0I-kxy"/>
                             <constraint firstItem="Uoa-qr-Jji" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ZWV-wb-2bq"/>
                             <constraint firstItem="SFq-e0-f7H" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="a4z-r8-hr5"/>
                             <constraint firstItem="SFq-e0-f7H" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aiL-kI-oE8"/>
+                            <constraint firstItem="Uoa-qr-Jji" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="hnc-8A-Xgq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Uoa-qr-Jji" secondAttribute="trailing" constant="-16" id="nDz-vj-9hv"/>
                         </constraints>
                     </view>
                     <connections>

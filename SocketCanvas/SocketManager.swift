@@ -26,7 +26,7 @@ class SocketManager {
     // MARK: Init with AWS server at http://54.213.175.58:3000
     
     private init() {
-        socket = SocketIOClient(socketURL: NSURL(string:"http://54.213.175.58:3000")! as URL)
+        socket = SocketIOClient(socketURL: NSURL(string:"http://localhost:3000")! as URL)
         socket.connect()
         print("DID CONNECT: \(socket.status.rawValue)")
         
