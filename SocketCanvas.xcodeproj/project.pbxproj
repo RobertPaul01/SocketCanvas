@@ -185,7 +185,7 @@
 				TargetAttributes = {
 					D5517E291DAEDA5D006B1409 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 43A7KU2U67;
+						DevelopmentTeam = WFH69FXHE8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -377,10 +377,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 43A7KU2U67;
+				DEVELOPMENT_TEAM = WFH69FXHE8;
 				INFOPLIST_FILE = SocketCanvas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JesseAlltop.SocketCanvas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RobertPaul.SocketCanvas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -390,10 +390,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 43A7KU2U67;
+				DEVELOPMENT_TEAM = WFH69FXHE8;
 				INFOPLIST_FILE = SocketCanvas/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.JesseAlltop.SocketCanvas;
+				PRODUCT_BUNDLE_IDENTIFIER = com.RobertPaul.SocketCanvas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
